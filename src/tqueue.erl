@@ -13,7 +13,7 @@ new() ->
 
 in(Queue, Item) ->
     NewLen = Queue#tqueue.len + 1,
-    NewList = lists:append(Queue#tqueue.items, [Item]),
+    NewList = Queue#tqueue.items ++ [Item],
     Queue#tqueue{len = NewLen, items = NewList}.
 
 out(Queue) ->
