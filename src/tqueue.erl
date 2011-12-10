@@ -1,8 +1,8 @@
 -module(tqueue).
 
 -export([new/0,
-         enqueue/2,
-         dequeue/1]).
+         in/2,
+         out/1]).
 
 -record(tqueue, {items = [],
                  len = 0}).
@@ -10,12 +10,12 @@
 new() ->
     #tqueue{}.
 
-enqueue(Queue, Item) ->
+in(Queue, Item) ->
     NewLen = Queue#tqueue.len + 1,
     NewList = lists:append(Queue#tqueue.items, [Item]),
     Queue#tqueue{len = NewLen, items = NewList}.
 
-dequeue(Queue) ->
+out(Queue) ->
     NewLen = Queue#tqueue.len - 1,
     case NewLen of
         -1 ->
