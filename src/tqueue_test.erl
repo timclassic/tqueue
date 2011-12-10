@@ -1,6 +1,11 @@
 -module(tqueue_test).
 
+%% Avoid warnings and avoid eunit dependency when compiling without
+%% TEST defined
+-compile([export_all]).
+-ifdef(TEST).
 -include_lib("eunit/include/eunit.hrl").
+-endif.
 
 %% Quick and dirty test
 in_out_len_test() ->
